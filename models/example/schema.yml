@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: grand_galleria
+    database: team4-499806
+    schema: grand_galleria
+
+    tables:
+      - name: data1
+      - name: data2
+      - name: data3
+      - name: data4
