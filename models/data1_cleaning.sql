@@ -5,7 +5,7 @@ WITH cleaned AS (
     FROM {{ source('grand_galleria', 'data1') }}
 )
 
-SELECT
+SELECT DISTINCT
     Grup,
     MagazaId,
 
