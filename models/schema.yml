@@ -37,3 +37,30 @@ models:
       - name: toplam_ciro
         tests:
           - not_null
+
+  - name: mart_grand_galleria__data1_store_performance
+    description: "Store and location level performance metrics for Data1"
+    columns:
+      - name: Magaza
+        tests:
+          - not_null
+
+      - name: Magaza_Lokasyon
+        tests:
+          - not_null
+
+      - name: toplam_ciro
+        tests:
+          - not_null
+
+      - name: toplam_satis_adedi
+        tests:
+          - not_null
+
+      - name: toplam_stok_adedi
+        tests:
+          - not_null
+
+      - name: toplam_stok_tutari
+        tests:
+          - not_null   

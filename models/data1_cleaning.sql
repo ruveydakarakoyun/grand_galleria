@@ -2,7 +2,7 @@ WITH cleaned AS (
     SELECT
         *,
         TRIM(REGEXP_REPLACE(Magaza, r'^\*+', '')) AS Magaza_Temiz
-    FROM {{ source('grand_galleria', 'data1') }}
+    FROM {{ ref('stg_grand_galleria__data1') }}
 )
 
 SELECT DISTINCT
@@ -93,7 +93,7 @@ SELECT DISTINCT
     _Mal_Grubu,
     UrunYil,
     UrunSezon,
-    Cinsiyet,
+    COALESCE(Cinsiyet, 'Unknown') AS Cinsiyet,
     KdvOran,
 
     COALESCE(LY_Toplam_Satis_Adedi, 0) AS LY_Toplam_Satis_Adedi,
