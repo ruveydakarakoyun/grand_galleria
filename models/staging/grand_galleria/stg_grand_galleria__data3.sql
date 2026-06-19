@@ -1,34 +1,44 @@
-with 
+with source as (
 
-source as (
-
-    select * from {{ source('grand_galleria', 'data3') }}
+    select *
+    from {{ source('grand_galleria', 'data3') }}
 
 ),
 
-renamed as (
+cleaned as (
 
     select
-        grup_adi,
+        trim(grup_adi) as grup_adi,
         magaza_id,
-        magaza_adi,
-        type,
-        status,
+        trim(magaza_adi) as magaza_adi,
+
+        trim(type) as magaza_tipi,
+        trim(status) as status,
+
         yil,
         ay,
         tarih,
-        satis_adedi,
-        satis_tutari,
-        iade_adedi,
-        iade_tutar__,
-        satis_fatura_sayisi,
-        iade_fatura_sayisi,
-        musteri_sayisi_giren,
-        musteri_sayisi_satis,
-        satis_tutari__esatis_dahil_
+
+        coalesce(satis_adedi, 0) as satis_adedi,
+        coalesce(satis_tutari, 0) as satis_tutari,
+
+        coalesce(iade_adedi, 0) as iade_adedi,
+        coalesce(iade_tutar__, 0) as iade_tutari,
+
+        coalesce(satis_fatura_sayisi, 0) as satis_fatura_sayisi,
+        coalesce(iade_fatura_sayisi, 0) as iade_fatura_sayisi,
+
+        coalesce(musteri_sayisi_giren, 0) as musteri_sayisi_giren,
+        coalesce(musteri_sayisi_satis, 0) as musteri_sayisi_satis,
+
+        coalesce(satis_tutari__esatis_dahil_, 0) as satis_tutari_esatis_dahil
 
     from source
 
+    where magaza_id is not null
+      and tarih is not null
+
 )
 
-select * from renamed
+select *
+from cleaned
