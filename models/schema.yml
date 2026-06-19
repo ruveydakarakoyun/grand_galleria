@@ -88,3 +88,14 @@ models:
       - name: toplam_stok_tutari
         tests:
           - not_null 
+  - name: mart_grand_galleria__data4_store_network
+    description: "Store network metrics by city"
+
+    columns:
+      - name: il
+        tests:
+          - not_null
+
+      - name: magaza_sayisi
+        tests:
+          - not_null
