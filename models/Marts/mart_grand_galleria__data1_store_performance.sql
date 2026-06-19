@@ -1,11 +1,30 @@
-SELECT
-    Magaza,
-    Magaza_Lokasyon,
-    SUM(TY_Toplam_Satis_Tutar__) AS toplam_ciro,
-    SUM(TY_Toplam_Satis_Adedi) AS toplam_satis_adedi,
-    SUM(TY_Stok_Adedi) AS toplam_stok_adedi,
-    SUM(TY_Stok_Tutar__) AS toplam_stok_tutari
-FROM {{ ref('data1_cleaning') }}
-GROUP BY
-    Magaza,
-    Magaza_Lokasyon
+with source as (
+
+    select *
+    from {{ ref('int_grand_galleria__data1_inventory_sales') }}
+
+)
+
+select
+
+    magaza_id,
+    magaza,
+
+    sum(ty_toplam_satis_tutari) as toplam_ciro,
+    sum(ty_toplam_satis_adedi) as toplam_satis_adedi,
+
+    sum(ty_stok_adedi) as toplam_stok_adedi,
+    sum(ty_stok_tutari) as toplam_stok_tutari,
+
+    avg(ciro_buyume_orani) as ortalama_ciro_buyume_orani,
+    avg(adet_buyume_orani) as ortalama_adet_buyume_orani,
+
+    avg(sell_through_orani) as ortalama_sell_through_orani,
+
+    avg(ortalama_birim_satis_fiyati) as ortalama_birim_satis_fiyati
+
+from source
+
+group by
+    magaza_id,
+    magaza
