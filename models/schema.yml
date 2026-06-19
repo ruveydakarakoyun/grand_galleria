@@ -10,3 +10,30 @@ sources:
       - name: data2
       - name: data3
       - name: data4
+
+models:
+  - name: stg_grand_galleria__data3
+    description: "Cleaned staging model for Data3"
+    columns:
+      - name: magaza_id
+        tests:
+          - not_null
+      - name: tarih
+        tests:
+          - not_null
+      - name: satis_adedi
+        tests:
+          - not_null
+
+  - name: int_grand_galleria__data3_kpis
+    description: "KPI calculations for Data3"
+
+  - name: mart_grand_galleria__data3_store_performance
+    description: "Store level performance metrics for Data3"
+    columns:
+      - name: magaza_id
+        tests:
+          - not_null
+      - name: toplam_ciro
+        tests:
+          - not_null
