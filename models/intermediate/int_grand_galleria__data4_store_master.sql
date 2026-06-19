@@ -16,20 +16,18 @@ store_master as (
         magaza_tipi,
         durum,
         m2,
-
         acilis_tarihi,
         kapanis_tarihi,
 
         case
-            when lower(durum) like '%aktif%' then 1
+            when lower(durum) like 'lfl%' then 1
+            when lower(durum) = 'pup' then 1
             else 0
         end as aktif_magaza_flag,
 
         case
-            when kapanis_tarihi is null
-                 or trim(kapanis_tarihi) = ''
-            then 1
-            else 0
+            when lower(durum) in ('cls', 'canceled') then 0
+            else 1
         end as acik_magaza_flag
 
     from source
