@@ -37,6 +37,5 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   grand_galleria:
-    # Applies to all files under models/example/
-    raw:
+    staging:
       +materialized: table

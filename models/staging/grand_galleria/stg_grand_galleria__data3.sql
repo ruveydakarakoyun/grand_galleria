@@ -20,11 +20,11 @@ renamed as (
         satis_adedi,
         satis_tutari,
         iade_adedi,
-        iade_tutari,
+        iade_tutar__,
         satis_fatura_sayisi,
         iade_fatura_sayisi,
-        musteri_sayisi__giren_,
-        musteri_sayisi__satis_,
+        musteri_sayisi_giren,
+        musteri_sayisi_satis,
         satis_tutari__esatis_dahil_
 
     from source
