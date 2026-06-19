@@ -4,7 +4,6 @@ sources:
   - name: grand_galleria
     database: team4-499806
     schema: grand_galleria
-
     tables:
       - name: data1
       - name: data2
@@ -12,6 +11,36 @@ sources:
       - name: data4
 
 models:
+  - name: stg_grand_galleria__data2
+    description: "Cleaned staging model for Data2"
+    columns:
+      - name: magaza_id
+        tests:
+          - not_null
+      - name: magaza_adi
+        tests:
+          - not_null
+
+  - name: int_grand_galleria__data2_targets
+    description: "Target and growth KPI calculations for Data2"
+    columns:
+      - name: magaza_id
+        tests:
+          - not_null
+
+  - name: mart_grand_galleria__data2_target_performance
+    description: "Store target performance mart for Data2"
+    columns:
+      - name: magaza_id
+        tests:
+          - not_null
+      - name: toplam_ciro_ty_mtd
+        tests:
+          - not_null
+      - name: toplam_hedef_ay
+        tests:
+          - not_null
+
   - name: stg_grand_galleria__data3
     description: "Cleaned staging model for Data3"
     columns:
@@ -44,23 +73,18 @@ models:
       - name: Magaza
         tests:
           - not_null
-
       - name: Magaza_Lokasyon
         tests:
           - not_null
-
       - name: toplam_ciro
         tests:
           - not_null
-
       - name: toplam_satis_adedi
         tests:
           - not_null
-
       - name: toplam_stok_adedi
         tests:
           - not_null
-
       - name: toplam_stok_tutari
         tests:
-          - not_null   
+          - not_null 
